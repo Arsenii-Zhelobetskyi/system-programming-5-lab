@@ -9,7 +9,10 @@ int main() {
         printf("Невдалось створити дочірній процес\n");
     } else if (process == 0) {
         printf("Дочірній процес. Айді процесу = %d\n", getpid());
-        exit(993);
+        char *args[] = {"./second-program", NULL};
+        execvp(args[0], args);
+        printf("Цей текст не повинен вивестися\n");
+        exit(1);
     } else {
         printf("Батьківський процес. Айді процесу = %d\n", getpid());
         int status;
